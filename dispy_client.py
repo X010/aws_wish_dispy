@@ -2,7 +2,7 @@
 # @Author: jeffrey
 # @Date:   2016-04-28T19:03:44+08:00
 # @Last modified by:   jeffrey
-# @Last modified time: 2016-04-28T23:02:21+08:00
+# @Last modified time: 2016-04-28T23:19:46+08:00
 
 
 def compute(filepath):
@@ -10,7 +10,9 @@ def compute(filepath):
     import os
     import commands
     host = socket.gethostname()
+    filename='/home/ec2-user/'+filepath[filepath.rfind('/')+1:]
     status,output=commands.getstatusoutput('aws s3 cp '+filepath+' /home/ec2-user/')
+    status,output=commands.getstatusoutput('cat '+filename+'|wc -l')
     return (host, output)
 
 if __name__ =='__main__':
