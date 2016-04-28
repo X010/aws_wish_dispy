@@ -2,7 +2,7 @@
 # @Author: jeffrey
 # @Date:   2016-04-28T19:03:44+08:00
 # @Last modified by:   jeffrey
-# @Last modified time: 2016-04-28T23:19:46+08:00
+# @Last modified time: 2016-04-28T23:22:43+08:00
 
 
 def compute(filepath):
@@ -12,7 +12,7 @@ def compute(filepath):
     host = socket.gethostname()
     filename='/home/ec2-user/'+filepath[filepath.rfind('/')+1:]
     status,output=commands.getstatusoutput('aws s3 cp '+filepath+' /home/ec2-user/')
-    status,output=commands.getstatusoutput('cat '+filename+'|wc -l')
+    status,output=commands.getstatusoutput('cat '+filename+'|python /home/ec2-user/aws_wish_dispy/luncher.py pcweb_pv 201604232246')
     return (host, output)
 
 if __name__ =='__main__':
