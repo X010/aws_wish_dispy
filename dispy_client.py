@@ -2,13 +2,16 @@
 # @Author: jeffrey
 # @Date:   2016-04-28T19:03:44+08:00
 # @Last modified by:   jeffrey
-# @Last modified time: 2016-04-28T22:35:01+08:00
+# @Last modified time: 2016-04-28T22:50:32+08:00
 
 
 def compute(filepath):
     import socket
+    import os
+    import commands
     host = socket.gethostname()
-    return (host, n)
+    (status,output)=commands.getstatus("aws s3 sync "+filepath)
+    return (host, output)
 
 if __name__ =='__main__':
     import dispy, random
@@ -21,6 +24,7 @@ if __name__ =='__main__':
         job=cluster.submit(val)
         job.id=i
         i+=1
+
         jobs.append(job)
 
     for job in jobs:
