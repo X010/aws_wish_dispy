@@ -1,0 +1,10 @@
+target
+.idea
+*/logs
+*.iml
+*.ipr
+*.iws
+build.*
+*/*/*/quartz.properties
+logs
+log
