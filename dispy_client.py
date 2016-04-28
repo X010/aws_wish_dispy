@@ -2,7 +2,7 @@
 # @Author: jeffrey
 # @Date:   2016-04-28T19:03:44+08:00
 # @Last modified by:   jeffrey
-# @Last modified time: 2016-04-28T22:33:35+08:00
+# @Last modified time: 2016-04-28T22:34:17+08:00
 
 
 def compute(filepath):
@@ -16,9 +16,10 @@ if __name__ =='__main__':
 
     files_dict=["s3://x010/iphone/pv/access_2016-04-14-14-45.log","s3://x010/iphone/pv/access_2016-04-14-14-40.log","s3://x010/iphone/pv/access_2016-04-14-14-35.log","s3://x010/iphone/pv/access_2016-04-14-14-35.log"]
     jobs = []
+    i=0
     for val in files_dict:
         job=cluster.submit(val)
-        job.id=i
+        job.id=i++
         jobs.append(job)
 
     for job in jobs:
