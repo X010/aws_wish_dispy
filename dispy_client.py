@@ -2,15 +2,26 @@
 # @Author: jeffrey
 # @Date:   2016-04-28T19:03:44+08:00
 # @Last modified by:   jeffrey
-# @Last modified time: 2016-04-28T22:13:54+08:00
+# @Last modified time: 2016-04-28T22:32:34+08:00
 
-#!/usr/bin/env python
-import dispy
-cluster = dispy.JobCluster('cat unittest/pcweb_pv.log|python luncher.py pcweb_pv 201604281859',nodes=['172.31.23.211','172.31.21.135'])
+
+def compute(filepath):
+    import socket
+    host = socket.gethostname()
+    return (host, n)
 
 if __name__ =='__main__':
-    import dispy
-    import os
-    import sys
-    cluster=dispy.JobCluster()
+    import dispy, random
+    cluster = dispy.JobCluster(compute,nodes=['172.31.23.211','172.31.21.135'])
+
+    files_dict=["s3://x010/iphone/pv/access_2016-04-14-14-45.log","s3://x010/iphone/pv/access_2016-04-14-14-40.log","s3://x010/iphone/pv/access_2016-04-14-14-35.log","s3://x010/iphone/pv/access_2016-04-14-14-35.log"]
+    jobs = []
+    for val in files_dict
+        job=cluster.submit(val)
+        job.id=i
+        jobs.append(job)
+
+    for job in jobs:
+        host,n=job()
+        print('%s executed job %s at %s with %s' % (host, job.id, job.start_time, n))
     cluster.print_status()
